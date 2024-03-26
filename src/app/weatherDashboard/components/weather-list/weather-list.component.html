@@ -1,0 +1,11 @@
+
+<ng-container *ngIf="weatherData$ | async">
+  <ul class="weather-list">
+    <li class="weather-list__item" *ngFor="let item of weatherData$ | async">
+      <p class="weather-list__day">{{ item.date | date: 'EEEE' }}</p>
+      <img [src]="item.imgUrl" class="weather-list__icon" />
+      <p class="weather-list__temp max">{{ item.maxTemp }}°</p>
+      <p class="weather-list__temp min">{{ item.minTemp }}°</p>
+    </li>
+  </ul>
+</ng-container>

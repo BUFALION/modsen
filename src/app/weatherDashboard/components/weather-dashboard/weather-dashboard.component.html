@@ -1,0 +1,20 @@
+<div class="wrapper">
+  <img class="wrapper__img" src="assets/pexels-yura-forrat-10161198.jpg" />
+  <main class="weather-dashboard">
+    <div class="weather-dashboard__main-info">
+      <div class="weather-dashboard__left-block">
+        <h1 class="weather-dashboard__time">
+          12:20PM <br />
+          Monday, 2 February 2023
+        </h1>
+      </div>
+      <div class="weather-dashboard__right-block">
+        <form class="weather-dashboard__search-form">
+          <input class="input" />
+          <button class="button">Search</button>
+        </form>
+      </div>
+    </div>
+    <app-weather-list [weatherData$]="weatherData$"></app-weather-list>
+  </main>
+</div>

@@ -1,0 +1,46 @@
+.weather-list {
+  list-style-type: none;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  background-color: rgba(236, 233, 233, 0.4);
+
+  padding: 1rem;
+  border-radius: 0.375rem 0.375rem 1rem 1rem;
+
+
+}
+.weather-list__item{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  flex:1;
+}
+.weather-list__day{
+  font-size: 1.25rem;
+  font-weight: 400;
+
+}
+
+
+.weather-list__icon{
+  width: 6rem;
+  height: 6rem;
+}
+
+.weather-list__temp{
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.min{
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: #444343;
+}
