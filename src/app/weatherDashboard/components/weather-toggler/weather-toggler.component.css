@@ -1,0 +1,17 @@
+.weather-toggler{
+    list-style: none;
+    display: flex;
+
+    gap: 1rem
+}
+
+.weather-toggler__link{
+    font-size: 1.25rem;
+    padding: 0.375rem;
+    border-radius: 0.75rem;
+    border: none;
+
+    background-color: black;
+    color: white;
+    text-decoration: none;
+}

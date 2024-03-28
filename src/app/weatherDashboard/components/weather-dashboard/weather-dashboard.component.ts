@@ -1,42 +1,53 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { WeatherListComponent } from '../weather-list/weather-list.component';
-import { WeatherService } from '../../services/weather.service';
-import { IWeather } from '../../interfaces/weather.interface';
-import { Observable, switchMap } from 'rxjs';
-import { GeoLocationService } from '../../../shared/services/geo-location.service';
-import { AsyncPipe } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
-import { IGeoLocation } from '../../interfaces/geoLocation.interface';
-import { LoadingComponent } from '../../../shared/components/loading/loading.component';
+import {Component, inject, OnDestroy, OnInit} from '@angular/core';
+import {AsyncPipe} from '@angular/common';
+import {ActivatedRoute, Params, Router, RouterOutlet} from '@angular/router';
+import {LoadingComponent} from '../../../shared/components/loading/loading.component';
+import {WeatherTogglerComponent} from '../weather-toggler/weather-toggler.component';
+import {GeoLocationService} from '../../../shared/services/geo-location.service';
+import { Subscription} from 'rxjs';
+
+import {IGeoLocation} from '../../interfaces/geoLocation.interface';
 
 @Component({
   selector: 'app-weather-dashboard',
   standalone: true,
-  imports: [WeatherListComponent, AsyncPipe, LoadingComponent],
+  imports: [
+    AsyncPipe,
+    LoadingComponent,
+    WeatherTogglerComponent,
+    RouterOutlet,
+  ],
   templateUrl: './weather-dashboard.component.html',
   styleUrl: './weather-dashboard.component.css',
 })
-export class WeatherDashboardComponent implements OnInit {
-  private readonly weatherService = inject(WeatherService);
+export class WeatherDashboardComponent implements OnInit, OnDestroy {
   private readonly geoLocationService = inject(GeoLocationService);
+  private readonly router = inject(Router);
   private readonly route = inject(ActivatedRoute);
 
-  public weatherData$: Observable<IWeather[]>;
+  private subscriptions: Subscription[] = [];
 
   ngOnInit(): void {
-    this.initializeValues();
-  }
-
-  private initializeValues() {
-    this.weatherData$ = this.route.params.pipe(
-      switchMap(params => {
-        const city = params['city'];
-
-        return this.geoLocationService.getGeocoding(city);
-      }),
-      switchMap((geoLocation: IGeoLocation) => {
-        return this.weatherService.getWeather(geoLocation.lat, geoLocation.lon);
+    this.subscriptions.push(
+      this.route.params.subscribe((params: Params) => {
+        if (!params['city']) this.getCurrentLocation();
       })
     );
   }
+
+  private getCurrentLocation() {
+    this.subscriptions.push(
+      this.geoLocationService.getCurrentPosition().subscribe(
+        (geoLocation: IGeoLocation) => {
+          this.router.navigate([`${geoLocation.name}/week`]);
+        }
+      )
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(sub => sub.unsubscribe())
+  }
+
 }
+

@@ -13,8 +13,9 @@
           <input class="input" />
           <button class="button">Search</button>
         </form>
+        <app-weather-toggler></app-weather-toggler>
       </div>
     </div>
-    <app-weather-list [weatherData$]="weatherData$"></app-weather-list>
+    <router-outlet></router-outlet>
   </main>
 </div>
