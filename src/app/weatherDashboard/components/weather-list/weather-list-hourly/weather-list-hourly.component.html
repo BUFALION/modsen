@@ -1,1 +1,14 @@
-<p>weather-list-hourly works!</p>
+<div class="wrapper">
+  <ng-container *ngIf="weatherData$ | async as weatherData; else loading">
+    <ul class="weather-list">
+      <li class="weather-list__item" *ngFor="let item of weatherData">
+        <p class="weather-list__day">{{ item.date | date: 'h:mm a' }}</p>
+        <img [src]="item.imgUrl" class="weather-list__icon" />
+        <p class="weather-list__temp">{{ item.currentTemp }}°</p>
+      </li>
+    </ul>
+  </ng-container>
+  <ng-template #loading>
+    <app-loading></app-loading>
+  </ng-template>
+</div>

@@ -1,4 +1,4 @@
-export interface IWeatherResponse {
+export interface IWeatherBaseResponse {
   latitude: number;
   longitude: number;
   generationtime_ms: number;
@@ -6,6 +6,9 @@ export interface IWeatherResponse {
   timezone: string;
   timezone_abbreviation: string;
   elevation: number;
+}
+
+export interface IWeatherDailyResponse extends IWeatherBaseResponse {
   daily_units: {
     time: string;
     weather_code: string;
@@ -17,5 +20,18 @@ export interface IWeatherResponse {
     weather_code: number[];
     temperature_2m_max: number[];
     temperature_2m_min: number[];
+  };
+}
+
+export interface IWeatherHourlyResponse extends IWeatherBaseResponse {
+  hourly: {
+    temperature_2m: number[];
+    time: string[];
+    weather_code: number[];
+  };
+  hourly_units: {
+    time: string;
+    temperature_2m: string;
+    weather_code: string;
   };
 }

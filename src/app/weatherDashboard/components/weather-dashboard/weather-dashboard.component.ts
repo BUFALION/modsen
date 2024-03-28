@@ -34,7 +34,6 @@ export class WeatherDashboardComponent implements OnInit, OnDestroy {
       })
     );
   }
-
   private getCurrentLocation() {
     this.subscriptions.push(
       this.geoLocationService.getCurrentPosition().subscribe(
