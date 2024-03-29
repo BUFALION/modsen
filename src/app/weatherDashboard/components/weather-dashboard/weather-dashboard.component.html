@@ -9,10 +9,7 @@
         </h1>
       </div>
       <div class="weather-dashboard__right-block">
-        <form class="weather-dashboard__search-form">
-          <input class="input" />
-          <button class="button">Search</button>
-        </form>
+        <app-weather-search [city]="city"></app-weather-search>
         <app-weather-toggler></app-weather-toggler>
       </div>
     </div>

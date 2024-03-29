@@ -12,6 +12,7 @@ export const routes: Routes = [
     path: ':city',
     component: WeatherDashboardComponent,
     children: [
+
       {
         path: 'week',
         component: WeatherListWeekComponent
@@ -19,7 +20,13 @@ export const routes: Routes = [
       {
         path: 'hourly',
         component: WeatherListHourlyComponent
-      }
+      },
+      {
+        path: '**',
+        pathMatch: "full",
+        redirectTo: 'week'
+      },
+
     ]
   },
   {

@@ -1,0 +1,21 @@
+<form
+  [formGroup]="searchForm"
+  class="weather-search__form"
+  (ngSubmit)="onSubmit()">
+  <input
+    class="input"
+    type="text"
+    formControlName="searchInput"
+    placeholder="Enter search query" />
+  <div
+    *ngIf="
+      searchForm.get('searchInput')!.invalid &&
+      (searchForm.get('searchInput')!.dirty ||
+        searchForm.get('searchInput')!.touched)
+    ">
+    <small style="color: red">Search query is required</small>
+  </div>
+  <button class="button" type="submit" [disabled]="searchForm.invalid">
+    Search
+  </button>
+</form>

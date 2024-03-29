@@ -23,6 +23,8 @@ export abstract class BaseWeatherListComponent implements OnInit {
       switchMap(params => {
         const city = params['city'];
         return this.geoLocationService.getGeocoding(city);
+
+
       }),
       switchMap((geoLocation: IGeoLocation) => this.fetchWeatherData(geoLocation))
     );

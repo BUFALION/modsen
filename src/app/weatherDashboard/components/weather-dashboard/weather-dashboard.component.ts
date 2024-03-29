@@ -7,6 +7,7 @@ import {GeoLocationService} from '../../../shared/services/geo-location.service'
 import { Subscription} from 'rxjs';
 
 import {IGeoLocation} from '../../interfaces/geoLocation.interface';
+import {WeatherSearchComponent} from "../weather-search/weather-search.component";
 
 @Component({
   selector: 'app-weather-dashboard',
@@ -16,6 +17,7 @@ import {IGeoLocation} from '../../interfaces/geoLocation.interface';
     LoadingComponent,
     WeatherTogglerComponent,
     RouterOutlet,
+    WeatherSearchComponent,
   ],
   templateUrl: './weather-dashboard.component.html',
   styleUrl: './weather-dashboard.component.css',
@@ -27,26 +29,28 @@ export class WeatherDashboardComponent implements OnInit, OnDestroy {
 
   private subscriptions: Subscription[] = [];
 
+  public city: string
+
   ngOnInit(): void {
     this.subscriptions.push(
       this.route.params.subscribe((params: Params) => {
-        if (!params['city']) this.getCurrentLocation();
+        this.city = params['city'] || this.getCurrentLocation();
       })
     );
   }
   private getCurrentLocation() {
     this.subscriptions.push(
-      this.geoLocationService.getCurrentPosition().subscribe(
-        (geoLocation: IGeoLocation) => {
-          this.router.navigate([`${geoLocation.name}/week`]);
-        }
-      )
+      this.geoLocationService
+        .getCurrentPosition()
+        .subscribe((geoLocation: IGeoLocation) => {
+          this.city = geoLocation.name
+          this.router.navigate([`${this.city}/week`]);
+        })
     );
   }
 
   ngOnDestroy(): void {
-    this.subscriptions.forEach(sub => sub.unsubscribe())
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
-
 }
 
