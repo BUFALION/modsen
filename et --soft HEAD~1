@@ -1,0 +1,66 @@
+[33mcommit b131e2a6270165768c2379842a25ad20bfc6a2c7[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: BUFALION <nboufal@bk.ru>
+Date:   Mon Apr 1 15:12:16 2024 +0300
+
+    feat:
+
+[33mcommit 486301f5853997f47a897d346c2b331e0128fc4e[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: BUFALION <nboufal@bk.ru>
+Date:   Fri Mar 29 13:30:52 2024 +0300
+
+    feat: add weather search by city
+
+[33mcommit 0006f80cc673caee700d9a8cc969dffcefbdf774[m
+Author: BUFALION <nboufal@bk.ru>
+Date:   Thu Mar 28 11:51:52 2024 +0300
+
+    refactor: weather-list components
+
+[33mcommit a10c4a6ca1c17ccb0033561b028f06c9d84cf86b[m
+Author: BUFALION <nboufal@bk.ru>
+Date:   Thu Mar 28 11:31:30 2024 +0300
+
+    feat: add show weather hourly
+
+[33mcommit c45ac4174c977fe987e26063fdbb75770a514c0f[m
+Author: BUFALION <nboufal@bk.ru>
+Date:   Thu Mar 28 10:29:06 2024 +0300
+
+    fix: auto location and show weather type
+
+[33mcommit 1b4ca4de2d6e4d4ca6fb9b1edd0f715362f99d53[m
+Author: BUFALION <nboufal@bk.ru>
+Date:   Wed Mar 27 21:09:33 2024 +0300
+
+    getting weather by URL parameter, determining location
+
+[33mcommit 685e18d681f8439553133d7e9367a1998d84028f[m
+Merge: 84b076d de1b975
+Author: BUFALION <nboufal@bk.ru>
+Date:   Tue Mar 26 19:35:25 2024 +0300
+
+    Merge branch 'main' of https://github.com/BUFALION/modsen
+
+[33mcommit 84b076d8a1dea7685cb040111dbb326b91fde023[m
+Author: BUFALION <nboufal@bk.ru>
+Date:   Tue Mar 26 19:31:37 2024 +0300
+
+    feat:receiving and visualizing weather for 7 days
+
+[33mcommit de1b97567935911d2cc51e1f94fa298047ae7a6a[m
+Author: BUFALION <nboufal@bk.ru>
+Date:   Tue Mar 26 19:31:37 2024 +0300
+
+    receiving and visualizing weather for 7 days
+
+[33mcommit 1f8d10b28946996f129d12de870883eb0b39cfd8[m
+Author: BUFALION <nboufal@bk.ru>
+Date:   Fri Mar 22 21:07:35 2024 +0300
+
+    added frontend Angular
+
+[33mcommit 47ca07b94d3bc34a4ccff2104e399499361197b7[m
+Author: BUFALION <96634233+BUFALION@users.noreply.github.com>
+Date:   Mon Mar 18 10:08:07 2024 +0300
+
+    Initial commit

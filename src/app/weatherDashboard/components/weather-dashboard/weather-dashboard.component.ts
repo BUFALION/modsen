@@ -1,13 +1,14 @@
-import {Component, inject, OnDestroy, OnInit} from '@angular/core';
-import {AsyncPipe} from '@angular/common';
-import {ActivatedRoute, Params, Router, RouterOutlet} from '@angular/router';
-import {LoadingComponent} from '../../../shared/components/loading/loading.component';
-import {WeatherTogglerComponent} from '../weather-toggler/weather-toggler.component';
-import {GeoLocationService} from '../../../shared/services/geo-location.service';
-import { Subscription} from 'rxjs';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { AsyncPipe, DatePipe } from '@angular/common';
+import { ActivatedRoute, Params, Router, RouterOutlet } from '@angular/router';
+import { LoadingComponent } from '../../../shared/components/loading/loading.component';
+import { WeatherTogglerComponent } from '../weather-toggler/weather-toggler.component';
+import { GeoLocationService } from '../../../shared/services/geo-location.service';
+import { Subscription } from 'rxjs';
 
-import {IGeoLocation} from '../../interfaces/geoLocation.interface';
-import {WeatherSearchComponent} from "../weather-search/weather-search.component";
+import { IGeoLocation } from '../../interfaces/geoLocation.interface';
+import { WeatherSearchComponent } from '../weather-search/weather-search.component';
+import {EventCalenderComponent} from "../event-calender/event-calender.component";
 
 @Component({
   selector: 'app-weather-dashboard',
@@ -18,6 +19,8 @@ import {WeatherSearchComponent} from "../weather-search/weather-search.component
     WeatherTogglerComponent,
     RouterOutlet,
     WeatherSearchComponent,
+    DatePipe,
+    EventCalenderComponent,
   ],
   templateUrl: './weather-dashboard.component.html',
   styleUrl: './weather-dashboard.component.css',
@@ -29,7 +32,7 @@ export class WeatherDashboardComponent implements OnInit, OnDestroy {
 
   private subscriptions: Subscription[] = [];
 
-  public city: string
+  public city: string;
 
   ngOnInit(): void {
     this.subscriptions.push(
@@ -38,12 +41,13 @@ export class WeatherDashboardComponent implements OnInit, OnDestroy {
       })
     );
   }
+
   private getCurrentLocation() {
     this.subscriptions.push(
       this.geoLocationService
         .getCurrentPosition()
         .subscribe((geoLocation: IGeoLocation) => {
-          this.city = geoLocation.name
+          this.city = geoLocation.name;
           this.router.navigate([`${this.city}/week`]);
         })
     );
@@ -53,4 +57,3 @@ export class WeatherDashboardComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 }
-

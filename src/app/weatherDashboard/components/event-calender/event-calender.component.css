@@ -1,0 +1,22 @@
+.event-calender__list{
+  display: flex;
+  flex-direction: column;
+
+}
+
+.event-calender__item{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.event-calender__time{
+  font-size: 1.25rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.25rem;
+
+  background-color: rgba(166, 182, 169, 0.8);
+}
+.event-calender__tittle{
+  font-weight: bold;
+}

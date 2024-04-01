@@ -2,13 +2,19 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, Observable, switchMap, throwError } from 'rxjs';
 import { IGeoLocation } from '../../weatherDashboard/interfaces/geoLocation.interface';
+import {CacheService} from "./cache/cache.service";
+import {CachedRequest} from "./cache/cache-decorator";
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class GeoLocationService {
   private readonly http = inject(HttpClient);
+  private readonly cache = inject(CacheService)
 
+
+  @CachedRequest(function () { return this.cache; })
   getGeocoding(city: string): Observable<IGeoLocation> {
     return this.http
       .get<
@@ -17,6 +23,7 @@ export class GeoLocationService {
       .pipe(map((response: IGeoLocation[]) => response[0]));
   }
 
+  @CachedRequest(function () { return this.cache; })
   getReverseGeocoding(lat: number, lon: number): Observable<IGeoLocation> {
     return this.http
       .get<
@@ -25,6 +32,7 @@ export class GeoLocationService {
       .pipe(map((response: IGeoLocation[]) => response[0]));
   }
 
+  @CachedRequest(function () { return this.cache; })
   getCurrentPosition(): Observable<IGeoLocation> {
     return new Observable<GeolocationPosition>(observer => {
       if ('geolocation' in navigator) {

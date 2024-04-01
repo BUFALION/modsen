@@ -1,5 +1,5 @@
 <div class="wrapper">
-  <img class="wrapper__img" src="assets/pexels-yura-forrat-10161198.jpg" />
+  <img class="wrapper__img" src="assets/8766e0ed1d8b022a9ec9ae102e88e28f.png" />
   <main class="weather-dashboard">
     <div class="weather-dashboard__main-info">
       <div class="weather-dashboard__left-block">
@@ -7,12 +7,20 @@
           12:20PM <br />
           Monday, 2 February 2023
         </h1>
+        <app-event-calender></app-event-calender>
       </div>
       <div class="weather-dashboard__right-block">
         <app-weather-search [city]="city"></app-weather-search>
         <app-weather-toggler></app-weather-toggler>
       </div>
     </div>
+
+<!--    <li class="weather-list__item">-->
+<!--      <p class="weather-list__day">{{ 12 | date: 'h:mm a' }}</p>-->
+<!--      <img src="assets/fog.svg" class="weather-list__icon" />-->
+<!--      <p class="weather-list__temp">{{ 20 }}°</p>-->
+<!--    </li>-->
+
     <router-outlet></router-outlet>
   </main>
 </div>
